@@ -62,43 +62,9 @@ template_head = """<!DOCTYPE html>
         </div>
         <div class="hd_bg"></div>
     </div>
-
-    <!-- 공통 상단 (Subtop) -->
-    <div class="subtop">
-        <div class="txt">
-            <h2>{category}</h2>
-            <h3>{title}</h3>
-        </div>
-    </div>
-
-    <!-- 본문 레이아웃 -->
-    <div class="container_wrap">
-        <!-- LNB (좌측 그룹메뉴) -->
-        <div id="aside" class="mo_hide">
-            <section id="groupmenu" style="width:195px;">
-                <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
-                    <tr height="70">
-                        <td class="nanum-gb" valign="top" colspan='3' style="color:#525252; font-size:25px; line-height:80px; border-bottom:1px solid #d6d6d6;border-top:10px solid #0033cc;text-align:center;">
-                            <b>{category}</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div id="nav1">
-                                <ul>
-                                    <li class="on"><a href="#" class="nanum-g" style="font-size:16px; line-height:45px; display:block;">{title}</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </section>
-        </div>
 """
 
 template_foot = """
-    </div>
-
     <!-- Footer -->
     <div id="ft">
         <div class="container">
@@ -143,8 +109,8 @@ for filename, (category, title, code) in subpages.items():
         print(f"Failed to fetch {url}: {e}")
         continue
     
-    # The actual content is inside <div id="container">
-    container = soup.find('div', id='container')
+    # The actual content is inside <div id="wrapper">
+    container = soup.find('div', id='wrapper')
     
     if container:
         # Convert container back to string
