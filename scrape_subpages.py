@@ -1,9 +1,34 @@
-<!DOCTYPE html>
+import os
+import requests
+from bs4 import BeautifulSoup
+import re
+
+subpages = {
+    "about_greeting.html": ("회사소개", "인사말", "0101"),
+    "about_history.html": ("회사소개", "연혁", "0102"),
+    "about_projects.html": ("회사소개", "주요실적", "0103"),
+    "about_location.html": ("회사소개", "오시는길", "0104"),
+    "business_01.html": ("업무분야", "안전진단", "0201"),
+    "business_02.html": ("업무분야", "안전점검", "0202"),
+    "business_03.html": ("업무분야", "건축물관리점검", "0203"),
+    "business_04.html": ("업무분야", "건설공사 정기안전점검", "0204"),
+    "business_05.html": ("업무분야", "내진성능평가", "0205"),
+    "business_06.html": ("업무분야", "법원감정", "0206"),
+    "business_07.html": ("업무분야", "인접건축물 사전조사", "0207"),
+    "business_08.html": ("업무분야", "구조설계/감리", "0208"),
+    "business_09.html": ("업무분야", "시설물보수/보강공사", "0209"),
+    "cert_01.html": ("인증 및 장비현황", "인증현황", "0301"),
+    "cert_02.html": ("인증 및 장비현황", "장비보유현황", "0302"),
+    "notice.html": ("고객센터", "공지사항", "0401"),
+    "inquiry.html": ("무료견적문의", "견적문의", "0402")
+}
+
+template_head = """<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>건축물관리점검 - (주)신영에스씨엠</title>
+    <title>{title} - (주)신영에스씨엠</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="http://sinyoungscm.com/theme/basic/css/default.css?ver=220620">
     <link rel="stylesheet" href="http://sinyoungscm.com/theme/basic/skin/board/basic_history2/style.css">
@@ -41,8 +66,8 @@
     <!-- 공통 상단 (Subtop) -->
     <div class="subtop">
         <div class="txt">
-            <h2>업무분야</h2>
-            <h3>건축물관리점검</h3>
+            <h2>{category}</h2>
+            <h3>{title}</h3>
         </div>
     </div>
 
@@ -54,14 +79,14 @@
                 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
                     <tr height="70">
                         <td class="nanum-gb" valign="top" colspan='3' style="color:#525252; font-size:25px; line-height:80px; border-bottom:1px solid #d6d6d6;border-top:10px solid #0033cc;text-align:center;">
-                            <b>업무분야</b>
+                            <b>{category}</b>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <div id="nav1">
                                 <ul>
-                                    <li class="on"><a href="#" class="nanum-g" style="font-size:16px; line-height:45px; display:block;">건축물관리점검</a></li>
+                                    <li class="on"><a href="#" class="nanum-g" style="font-size:16px; line-height:45px; display:block;">{title}</a></li>
                                 </ul>
                             </div>
                         </td>
@@ -69,97 +94,9 @@
                 </table>
             </section>
         </div>
+"""
 
-<div id="container">
-<h2 id="container_title">건축물관리점검</h2>
-<div class="sub_wrap">
-<div class="sub_0201">
-<div class="cont">
-<div class="title">
-<h1>건축물관리점검(건축물관리법)</h1>
-</div>
-<table>
-<colgroup>
-<col width="15%"/>
-<col width="85%"/>
-</colgroup>
-<tr>
-<th>관련법</th>
-<td>
-<ul>
-<li>건축물관리법 제13조(정기점검의 실시)</li>
-<li>건축물관리법 제14조(긴급점검의 실시)</li>
-<li>건축물관리법 제15조(소규모 노후 건축물 등 점검의 실시)</li>
-<li>건축물관리점검지침</li>
-</ul>
-</td>
-</tr>
-<tr>
-<th>실시대상</th>
-<td>
-<ul>
-<li>다중이용업소가 있는 건축물(조례로 지정)</li>
-<li>다중이용 건축물</li>
-<li>연면적 3천제곱미터 이상인 건축물</li>
-<li>준다중이용 건축물로서 특수구조 건축물</li>
-</ul>
-</td>
-</tr>
-<tr>
-<th>실시시기</th>
-<td>
-<ul>
-<li>최초점검 : 건축물의 사용승인일로부터 5년이내</li>
-<li>정기점검 : 최초점검 시행일 기준 3년마다(매 3년이 되는 해의 기준일과 같은 날 전날까지)</li>
-</ul>
-</td>
-</tr>
-<tr>
-<th>과업내용</th>
-<td>
-<ul>
-<li>
-<b>법규 유지</b>
-<dl>
-<dd>대지, 높이형태, 범죄예방</dd>
-</dl>
-</li>
-<li>
-<b>기능 유지</b>
-<dl>
-<dd>급·배수, 냉난방·환기, 전기설비</dd>
-</dl>
-</li>
-<li>
-<b>에너지 및 친환경</b>
-<dl>
-<dd>열손실방지, 친환경인증</dd>
-</dl>
-</li>
-<li>
-<b>구조안전</b>
-<dl>
-<dd>대지안전, 정적하중, 지진하중</dd>
-</dl>
-</li>
-<li>
-<b>화재안전</b>
-<dl>
-<dd>피난성능, 화재확산, 내화성능</dd>
-</dl>
-</li>
-<li>
-                            시행 연도에 재건축진단, 시특법에 따른 안전점검·안전진단이 실시된 경우에는 정기점검 중<br class="mo_hide"/> 구조안전에 관한 사항을 생략할 수 있다.
-                            </li>
-</ul>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-
+template_foot = """
     </div>
 
     <!-- Footer -->
@@ -180,3 +117,47 @@
     <script async="true" src="//log1.toup.net/mirae_log_chat_common.js?adkey=plvbh" charset="UTF-8"></script>
 </body>
 </html>
+"""
+
+def fix_urls(html_content):
+    # Fix absolute URLs
+    html_content = re.sub(r'src="(/[^"]+)"', r'src="http://sinyoungscm.com\1"', html_content)
+    html_content = re.sub(r'href="(/[^"]+)"', r'href="http://sinyoungscm.com\1"', html_content)
+    # Fix inline styles (background-image: url(...))
+    html_content = re.sub(r'url\(\'(/[^"]+)\'\)', r"url('http://sinyoungscm.com\1')", html_content)
+    html_content = re.sub(r'url\((/[^"]+)\)', r"url('http://sinyoungscm.com\1')", html_content)
+    
+    # Optional: Fix any action attributes in forms to point to local if needed, but since it's a clone, point to real server or #
+    html_content = re.sub(r'action="[^"]+"', 'action="#"', html_content)
+    return html_content
+
+for filename, (category, title, code) in subpages.items():
+    print(f"Scraping {code} ({title})...")
+    url = f"http://sinyoungscm.com/bbs/board.php?bo_table={code}"
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'}
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        response.encoding = 'utf-8'
+        soup = BeautifulSoup(response.text, 'html.parser')
+    except Exception as e:
+        print(f"Failed to fetch {url}: {e}")
+        continue
+    
+    # The actual content is inside <div id="container">
+    container = soup.find('div', id='container')
+    
+    if container:
+        # Convert container back to string
+        container_html = str(container)
+        container_html = fix_urls(container_html)
+        
+        # Build the final page
+        final_html = template_head.format(category=category, title=title) + "\n" + container_html + "\n" + template_foot
+        
+        with open(f"f:/webpage2/{filename}", "w", encoding="utf-8") as f:
+            f.write(final_html)
+        print(f"-> Successfully created {filename}")
+    else:
+        print(f"-> ERROR: Container not found in {code}")
+
+print("All 17 subpages successfully deep scraped and replicated.")

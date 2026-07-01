@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>오시는길 - (주)신영에스씨엠</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="http://sinyoungscm.com/theme/basic/css/default.css?ver=220620">
+    <link rel="stylesheet" href="http://sinyoungscm.com/theme/basic/skin/board/basic_history2/style.css">
+    <link rel="stylesheet" href="http://sinyoungscm.com/theme/basic/skin/board/basic/style.css">
 </head>
 <body>
     <div id="hd" class="sticky">
@@ -67,27 +70,182 @@
             </section>
         </div>
 
-        <!-- 본문 Container -->
-        <div id="container">
-            <h2 id="container_title">오시는길</h2>
-            <div class="sub_wrap">
-                <div class="sub_0104">
-                    <div class="img">
-                        <img src="http://sinyoungscm.com/img/0104_1.jpg" alt="오시는길" onerror="this.src='http://sinyoungscm.com/img/main01.jpg'">
-                    </div>
-                    <div class="txt">
-                        <h1>신뢰를 최우선으로 하는 안전진단 전문기관</h1>
-                        <h2>(주)신영에스씨엠 - 오시는길</h2>
-                        <p>
-                        저희는 최신 기술과 엄격한 안전진단 기준을 바탕으로,<br class="mo_hide"> 다양한 분야의 안전진단 서비스를 제공합니다.
-                        <br><br>
-                        고도화된 진단 장비와 정밀한 데이터 분석을 통해 위험 요소를 신속하게 파악하고<br class="mo_hide">
-                        안전 대책을 마련함으로써, 재해 위험을 최소화하고 있습니다.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div id="container">
+<h2 id="container_title">오시는길</h2>
+<style>
+
+    .map_wrap{margin-bottom:30px;}
+
+    .map_wrap h2{display:inline-block;margin:30px 0;padding-bottom:10px;font-size:26px;}
+
+    .map_wrap h2 span{color:#0033cc;}
+
+    .map_info_t{width:100%;margin-bottom:60px;border-top:1px solid #ddd;border-bottom:1px solid #ddd;border-spacing:15px;}
+
+    .map_info_t .map_info_icon{text-align: center;font-size: 22px;color: #0033cc;}
+
+    .map_info_t .map_info_tit{font-size: 16px;font-weight:bold;text-align: center;border-left: 1px solid #0033cc;border-right: 1px solid #0033cc;}
+
+    .map_info_t .map_info_con{font-size: 16px; word-break: keep-all;}
+
+    .map_info{margin-bottom:60px;border-top:1px solid #ddd;}
+
+    .map_info li{padding:15px 0;font-size:14px;border-bottom:1px solid #ddd;}
+
+    .map_info li i{display:inline-block;width:50px;text-align:center;font-size:22px;color:#0033cc}
+
+    .map_info li b{display:inline-block;width:80px;margin-right:10px;font-size:16px;text-align:center;border-left:1px solid #0033cc;border-right:1px solid #0033cc;}
+
+    .root_daum_roughmap {width:100%}
+
+    .mo_show{display:none;}
+
+    .mid_box h3{font-size: 28px; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid #ddd; position: relative; padding-left: 25px;}
+    .mid_box h3::before{position: absolute; left: 0; top: 11px; width: 12px; height: 12px; background-color: #0033cc; content: '';}
+
+    /* 반응형 */
+
+    /* 768 ~ 1023 */
+
+    @media all and (max-width:1023px){
+
+        .mo_show{display:block;}
+
+        .map_info_t{border-spacing: 10px 5px}
+
+        .map_info_t .map_info_icon{width:26px;}
+
+        .map_info_t .map_info_tit{width:70px; word-break:keep-all; padding: 0 5px; font-size: 14px}
+
+        .map_info_t .map_info_con{font-size: 14px;}
+
+        .map_wrap h2{font-size: 23px;}
+
+        .mid_box h3{font-size: 22px; padding-bottom: 15px; margin-bottom: 15px;padding-left: 20px;}
+        .mid_box h3::before{top: 7px;}
+
+    }
+
+    
+
+</style>
+<div class="sub_wrap center">
+<div class="mid_box">
+<div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+<h3>서울사무실</h3>
+<div class="map_wrap">
+<!-- <h2><span>―</span> 본 사</h2> -->
+<!-- * 카카오맵 - 지도퍼가기 -->
+<!-- 1. 지도 노드 -->
+<div class="root_daum_roughmap root_daum_roughmap_landing" id="daumRoughmapContainer1749090060288" style="width:100%"></div>
+<!--
+
+                    2. 설치 스크립트
+
+                    * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+
+                -->
+<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+<!-- 3. 실행 스크립트 -->
+<script charset="UTF-8">
+
+                    new daum.roughmap.Lander({
+
+                        "timestamp" : "1749090060288",
+
+                        "key" : "3zsch4b4suk",
+
+                        //"mapWidth" : "640",
+
+                        "mapHeight" : "360"
+
+                    }).render();
+
+                </script>
+</div>
+<table class="map_info_t">
+<tbody>
+<tr>
+<th class="map_info_icon" width="50px"><i class="fas fa-map-marker-alt"></i></th>
+<td class="map_info_tit" width="80px">주 소</td>
+<td class="map_info_con">서울특별시 성동구 성수일로4길 25, 서울숲코오롱디지털타워 1차 809호</td>
+</tr>
+<tr>
+<th class="map_info_icon"><i class="fa-solid fa-tty"></i></th>
+<td class="map_info_tit">전화번호</td>
+<td class="map_info_con">02-484-4700</td>
+</tr>
+<tr>
+<th class="map_info_icon"><i class="fa-solid fa-fax"></i></th>
+<td class="map_info_tit">팩스번호</td>
+<td class="map_info_con">02-484-4750</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mid_box">
+<div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+<h3>광명사무실</h3>
+<div class="map_wrap">
+<!-- <h2><span>―</span> 본 사</h2> -->
+<!-- * 카카오맵 - 지도퍼가기 -->
+<!-- 1. 지도 노드 -->
+<div class="root_daum_roughmap root_daum_roughmap_landing" id="daumRoughmapContainer1749098294624" style="width:100%"></div>
+<!--
+
+                    2. 설치 스크립트
+
+                    * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+
+                -->
+<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+<!-- 3. 실행 스크립트 -->
+<script charset="UTF-8">
+
+                    new daum.roughmap.Lander({
+
+                        "timestamp" : "1749098294624",
+
+                        "key" : "3zxym4ikjzd",
+
+                        //"mapWidth" : "640",
+
+                        "mapHeight" : "360"
+
+                    }).render();
+
+                </script>
+</div>
+<table class="map_info_t">
+<tbody>
+<tr>
+<th class="map_info_icon" width="50px"><i class="fas fa-map-marker-alt"></i></th>
+<td class="map_info_tit" width="80px">주 소</td>
+<td class="map_info_con">경기도 광명시 소하로 190, 광명G타워 B동 1314호</td>
+</tr>
+<tr>
+<th class="map_info_icon"><i class="fa-solid fa-tty"></i></th>
+<td class="map_info_tit">전화번호</td>
+<td class="map_info_con">031-985-4816</td>
+</tr>
+<tr>
+<th class="map_info_icon"><i class="fa-solid fa-fax"></i></th>
+<td class="map_info_tit">팩스번호</td>
+<td class="map_info_con">031-985-4817</td>
+</tr>
+<tr>
+<th class="map_info_icon"><i class="fas fa-envelope"></i></th>
+<td class="map_info_tit">이메일</td>
+<td class="map_info_con">scm4700@naver.com</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
     </div>
 
     <!-- Footer -->
@@ -105,7 +263,6 @@
     </div>
     
     <script src="./js/main.js"></script>
-    <!-- MR Script Ver 2.0 (실시간 문의 플로팅 위젯) -->
     <script async="true" src="//log1.toup.net/mirae_log_chat_common.js?adkey=plvbh" charset="UTF-8"></script>
 </body>
 </html>
